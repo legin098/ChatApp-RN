@@ -5,7 +5,8 @@ import { MyInput } from "../MyInput";
 import { MyText } from "../MyText";
 
 export const ForgotPassword = () => {
-  const { setAuthState, setEmail, isLoading } = useContext(AuthContext);
+  const { setAuthState, setEmail, isLoading, handleForgotPassword } =
+    useContext(AuthContext);
 
   return (
     <>
@@ -20,7 +21,7 @@ export const ForgotPassword = () => {
       <MyButton
         title={isLoading ? "Sending Code..." : "Send Code"}
         disabled={isLoading ? true : false}
-        onPress={() => setAuthState("confirmForgotPassword")}
+        onPress={handleForgotPassword}
         style={{ marginTop: 20 }}
       />
       <MyButton

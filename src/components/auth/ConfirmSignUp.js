@@ -5,8 +5,14 @@ import { MyInput } from "../MyInput";
 import { MyText } from "../MyText";
 
 export const ConfirmSignUp = () => {
-  const { setVerificationCode, handleConfirmSignUp, setAuthState } =
-    useContext(AuthContext);
+  const {
+    setVerificationCode,
+    handleConfirmSignUp,
+    setAuthState,
+    setEmail,
+    email,
+    handleResendVerificationCode,
+  } = useContext(AuthContext);
 
   return (
     <>
@@ -16,10 +22,14 @@ export const ConfirmSignUp = () => {
       <MyText type="caption" style={{ marginBottom: 15 }}>
         Enter your verification code.
       </MyText>
-
+      <MyInput label={"Email"} value={email} onChangeText={setEmail} />
       <MyInput label={"Verification Code"} onChangeText={setVerificationCode} />
       <MyButton title={"Create Account"} onPress={handleConfirmSignUp} />
-      <MyButton title={"Resend Code"} type={"secondary"} />
+      <MyButton
+        title={"Re-send Code"}
+        type={"secondary"}
+        onPress={handleResendVerificationCode}
+      />
       <MyButton
         title={"Back to Login"}
         type={"secondary"}
