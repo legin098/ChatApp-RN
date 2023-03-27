@@ -9,7 +9,7 @@ import { Splash } from "./src/screens/Splash";
 Amplify.configure(awsConfig);
 
 export default App = () => {
-  const theme = useColorScheme()
+  const theme = useColorScheme();
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -18,18 +18,17 @@ export default App = () => {
       case "signIn":
         const { attributes } = data.payload.data;
         setUser(attributes);
-        console.log("user signed in from Hub");
         break;
       case "signOut":
         setUser(null);
-        console.log("user signed out");
       default:
         break;
     }
   };
 
-  Hub.listen("auth", listener)
+  Hub.listen("auth", listener);
 
-  if (isLoading) return <Splash setUser={setUser} setIsLoading={setIsLoading} />;
+  if (isLoading)
+    return <Splash setUser={setUser} setIsLoading={setIsLoading} />;
   return user ? <Root colorScheme={theme} /> : <AuthScreen />;
 };

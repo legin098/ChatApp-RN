@@ -7,7 +7,10 @@ export function View(props) {
 
   return (
     <DefaultView
-      style={[{ backgroundColor: Colors[theme].background, paddingHorizontal: 18 }, style]}
+      style={[
+        { backgroundColor: Colors[theme].background, paddingHorizontal: 18 },
+        style,
+      ]}
       {...otherProps}
     />
   );

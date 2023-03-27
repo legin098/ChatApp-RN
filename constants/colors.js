@@ -1,11 +1,3 @@
-export const Colors = {
-  primary: "#000",
-  secondary: "#ccc",
-  light: "#fff",
-  gray: "#adb3b3",
-  dark: "#4b4c4c",
-};
-
 const tintColorLight = "#2f95dc";
 const tintColorDark = "#e7e7e7";
 

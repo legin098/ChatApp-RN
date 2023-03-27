@@ -2,7 +2,7 @@ import { Auth } from "aws-amplify";
 import { createContext, useState } from "react";
 
 const AuthContext = createContext({
-  authState: "signIn",
+  authState: "default",
   setAuthState: () => {},
   email: "",
   setEmail: () => {},
@@ -19,7 +19,7 @@ const AuthContext = createContext({
 const { Provider } = AuthContext;
 
 function AuthProvider({ children }) {
-  const [authState, setAuthState] = useState("signIn");
+  const [authState, setAuthState] = useState("default");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [verificationCode, setVerificationCode] = useState("");

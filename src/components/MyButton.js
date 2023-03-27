@@ -1,7 +1,18 @@
-import { StyleSheet, Text, TouchableOpacity, useColorScheme } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  useColorScheme,
+} from "react-native";
 import Colors from "../../constants/colors";
 
-export const MyButton = ({ title, onPress, type = "primary", style }) => {
+export const MyButton = ({
+  title,
+  onPress,
+  type = "primary",
+  style,
+  ...otherProps
+}) => {
   const theme = useColorScheme();
 
   const buttonStyle =
@@ -23,7 +34,11 @@ export const MyButton = ({ title, onPress, type = "primary", style }) => {
       : Colors.light.background;
 
   return (
-    <TouchableOpacity style={[styles.button, buttonStyle]} onPress={onPress}>
+    <TouchableOpacity
+      style={[styles.button, buttonStyle, style]}
+      onPress={onPress}
+      {...otherProps}
+    >
       <Text style={[styles.buttonText, { color: textStyle }]}>{title}</Text>
     </TouchableOpacity>
   );
@@ -32,7 +47,7 @@ export const MyButton = ({ title, onPress, type = "primary", style }) => {
 const styles = StyleSheet.create({
   button: {
     width: "100%",
-    height: 45,
+    height: 50,
     padding: 10,
     marginVertical: 10,
     borderRadius: 8,
