@@ -2,7 +2,7 @@ import { Amplify, Hub } from "aws-amplify";
 import { useState } from "react";
 import { useColorScheme } from "react-native";
 import awsConfig from "./src/aws-exports";
-import { Root } from "./src/navigation/Root";
+import Root from "./src/navigation/Root";
 import AuthScreen from "./src/screens/Auth";
 import { Splash } from "./src/screens/Splash";
 
