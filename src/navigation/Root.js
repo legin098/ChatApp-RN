@@ -1,5 +1,3 @@
-//! Pendiente revisar presnetacion screen Onboarding
-
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
   DarkTheme,
@@ -28,7 +26,7 @@ export default function Root({ colorScheme }) {
 
 function BottomNavigation() {
   return (
-    <Tab.Navigator initialRouteName="Home">
+    <Tab.Navigator initialRouteName="HomeStack">
       <Tab.Screen
         name="HomeStack"
         component={HomeStack}
@@ -72,7 +70,6 @@ function HomeStack() {
         component={Onboarding}
         options={{
           headerShown: false,
-          presentation: "fullScreenModal",
         }}
       />
     </Stack.Navigator>

@@ -5,6 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import { StyleSheet } from "react-native";
 import { Image, View as DefaultView } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Modal } from "react-native";
 
 export const Onboarding = () => {
   const navigation = useNavigation();
@@ -20,30 +21,32 @@ export const Onboarding = () => {
   }
 
   return (
-    <View style={{ flex: 1, justifyContent: "center" }}>
-      <MyText style={styles.title} type="title">
-        Welcome to
-      </MyText>
-      <MyText style={[styles.title, { marginBottom: 30 }]} type="title">
-        Only Chats
-      </MyText>
-      {appFeatures.map((feature, index) => (
-        <View key={index} style={styles.itemContainer}>
-          <Image source={feature.icon} style={styles.icon} />
-          <DefaultView style={styles.textWrapper}>
-            <MyText type="caption" style={{ fontWeight: "bold" }}>
-              {feature.title}
-            </MyText>
-            <MyText type="caption">{feature.description}</MyText>
-          </DefaultView>
-        </View>
-      ))}
-      <MyButton
-        style={{ marginTop: 50 }}
-        title={"Continue"}
-        onPress={handleOnContinue}
-      />
-    </View>
+    <Modal presentationStyle="overFullScreen" visible={true}>
+      <View style={{ flex: 1, justifyContent: "center" }}>
+        <MyText style={styles.title} type="title">
+          Welcome to
+        </MyText>
+        <MyText style={[styles.title, { marginBottom: 30 }]} type="title">
+          Only Chats
+        </MyText>
+        {appFeatures.map((feature, index) => (
+          <View key={index} style={styles.itemContainer}>
+            <Image source={feature.icon} style={styles.icon} />
+            <DefaultView style={styles.textWrapper}>
+              <MyText type="caption" style={{ fontWeight: "bold" }}>
+                {feature.title}
+              </MyText>
+              <MyText type="caption">{feature.description}</MyText>
+            </DefaultView>
+          </View>
+        ))}
+        <MyButton
+          style={{ marginTop: 50 }}
+          title={"Continue"}
+          onPress={handleOnContinue}
+        />
+      </View>
+    </Modal>
   );
 };
 
