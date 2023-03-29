@@ -1,5 +1,8 @@
-import { Auth } from "aws-amplify";
+import { Auth, API, graphqlOperation } from "aws-amplify";
 import { createContext, useState } from "react";
+import { useDispatch } from "react-redux";
+import { setUser } from "../features/user";
+import { createUser } from "../graphql/mutations";
 
 const AuthContext = createContext({
   authState: "default",
@@ -36,6 +39,7 @@ function AuthProvider({ children }) {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [verificationCode, setVerificationCode] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
 
   async function handleSignIn() {
     if (!email || !password) {
@@ -99,8 +103,9 @@ function AuthProvider({ children }) {
     try {
       setIsLoading(true);
       await Auth.confirmSignUp(email, verificationCode);
-      alert("Confirmed, You can now sign in.");
-      setAuthState("signIn");
+      const user = await Auth.signIn({ username: email, password });
+      await saveUserToDatabase(user);
+      alert("Welcome, account created succesfully");
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
@@ -155,6 +160,31 @@ function AuthProvider({ children }) {
       alert(`Successfully resent confirmation code to ${email}`);
     } catch (error) {
       alert(e.message);
+    }
+  }
+
+  async function saveUserToDatabase(user) {
+    const { attributes } = user;
+    const userToSave = {
+      id: attributes.sub,
+      firstName: attributes.given_name,
+      lastName: attributes.family_name,
+      profilePicture: null,
+      email: attributes.email.toLowerCase(),
+      status: null,
+      notificationToken: null,
+    };
+
+    try {
+      const userFromDB = await API.graphql(
+        graphqlOperation(createUser, {
+          input: userToSave,
+        })
+      );
+      dispatch(setUser(userToSave));
+      console.log("User saved to DB Redux", userFromDB);
+    } catch (error) {
+      console.log("Error saving user", error);
     }
   }
 

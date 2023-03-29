@@ -8,7 +8,7 @@ export const createUser = /* GraphQL */ `
   ) {
     createUser(input: $input, condition: $condition) {
       id
-      fisrtName
+      firstName
       lastName
       profilePicture
       email
@@ -36,7 +36,7 @@ export const updateUser = /* GraphQL */ `
   ) {
     updateUser(input: $input, condition: $condition) {
       id
-      fisrtName
+      firstName
       lastName
       profilePicture
       email
@@ -64,7 +64,7 @@ export const deleteUser = /* GraphQL */ `
   ) {
     deleteUser(input: $input, condition: $condition) {
       id
-      fisrtName
+      firstName
       lastName
       profilePicture
       email
@@ -110,7 +110,7 @@ export const createChatRoom = /* GraphQL */ `
         chatRoomID
         author {
           id
-          fisrtName
+          firstName
           lastName
           profilePicture
           email
@@ -166,7 +166,7 @@ export const updateChatRoom = /* GraphQL */ `
         chatRoomID
         author {
           id
-          fisrtName
+          firstName
           lastName
           profilePicture
           email
@@ -222,7 +222,7 @@ export const deleteChatRoom = /* GraphQL */ `
         chatRoomID
         author {
           id
-          fisrtName
+          firstName
           lastName
           profilePicture
           email
@@ -263,7 +263,7 @@ export const createPost = /* GraphQL */ `
       type
       author {
         id
-        fisrtName
+        firstName
         lastName
         profilePicture
         email
@@ -294,7 +294,7 @@ export const updatePost = /* GraphQL */ `
       type
       author {
         id
-        fisrtName
+        firstName
         lastName
         profilePicture
         email
@@ -325,7 +325,7 @@ export const deletePost = /* GraphQL */ `
       type
       author {
         id
-        fisrtName
+        firstName
         lastName
         profilePicture
         email
@@ -356,7 +356,7 @@ export const createMessage = /* GraphQL */ `
       chatRoomID
       author {
         id
-        fisrtName
+        firstName
         lastName
         profilePicture
         email
@@ -386,7 +386,7 @@ export const updateMessage = /* GraphQL */ `
       chatRoomID
       author {
         id
-        fisrtName
+        firstName
         lastName
         profilePicture
         email
@@ -416,7 +416,7 @@ export const deleteMessage = /* GraphQL */ `
       chatRoomID
       author {
         id
-        fisrtName
+        firstName
         lastName
         profilePicture
         email
@@ -447,7 +447,7 @@ export const createUserChatRooms = /* GraphQL */ `
       chatRoomId
       user {
         id
-        fisrtName
+        firstName
         lastName
         profilePicture
         email
@@ -497,7 +497,7 @@ export const updateUserChatRooms = /* GraphQL */ `
       chatRoomId
       user {
         id
-        fisrtName
+        firstName
         lastName
         profilePicture
         email
@@ -547,7 +547,7 @@ export const deleteUserChatRooms = /* GraphQL */ `
       chatRoomId
       user {
         id
-        fisrtName
+        firstName
         lastName
         profilePicture
         email

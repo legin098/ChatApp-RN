@@ -5,7 +5,7 @@ export const getUser = /* GraphQL */ `
   query GetUser($id: ID!) {
     getUser(id: $id) {
       id
-      fisrtName
+      firstName
       lastName
       profilePicture
       email
@@ -35,7 +35,7 @@ export const listUsers = /* GraphQL */ `
     listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        fisrtName
+        firstName
         lastName
         profilePicture
         email
@@ -73,7 +73,7 @@ export const getChatRoom = /* GraphQL */ `
         chatRoomID
         author {
           id
-          fisrtName
+          firstName
           lastName
           profilePicture
           email
@@ -144,7 +144,7 @@ export const getPost = /* GraphQL */ `
       type
       author {
         id
-        fisrtName
+        firstName
         lastName
         profilePicture
         email
@@ -177,7 +177,7 @@ export const listPosts = /* GraphQL */ `
         type
         author {
           id
-          fisrtName
+          firstName
           lastName
           profilePicture
           email
@@ -204,7 +204,7 @@ export const getMessage = /* GraphQL */ `
       chatRoomID
       author {
         id
-        fisrtName
+        firstName
         lastName
         profilePicture
         email
@@ -236,7 +236,7 @@ export const listMessages = /* GraphQL */ `
         chatRoomID
         author {
           id
-          fisrtName
+          firstName
           lastName
           profilePicture
           email
@@ -263,7 +263,7 @@ export const getUserChatRooms = /* GraphQL */ `
       chatRoomId
       user {
         id
-        fisrtName
+        firstName
         lastName
         profilePicture
         email
@@ -315,7 +315,7 @@ export const listUserChatRooms = /* GraphQL */ `
         chatRoomId
         user {
           id
-          fisrtName
+          firstName
           lastName
           profilePicture
           email
@@ -360,7 +360,7 @@ export const postsByDate = /* GraphQL */ `
         type
         author {
           id
-          fisrtName
+          firstName
           lastName
           profilePicture
           email
@@ -402,7 +402,7 @@ export const messagesByChatRoom = /* GraphQL */ `
         chatRoomID
         author {
           id
-          fisrtName
+          firstName
           lastName
           profilePicture
           email
@@ -442,7 +442,7 @@ export const userChatRoomsByUserId = /* GraphQL */ `
         chatRoomId
         user {
           id
-          fisrtName
+          firstName
           lastName
           profilePicture
           email
@@ -486,7 +486,7 @@ export const userChatRoomsByChatRoomId = /* GraphQL */ `
         chatRoomId
         user {
           id
-          fisrtName
+          firstName
           lastName
           profilePicture
           email

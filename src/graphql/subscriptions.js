@@ -5,7 +5,7 @@ export const onCreateUser = /* GraphQL */ `
   subscription OnCreateUser($filter: ModelSubscriptionUserFilterInput) {
     onCreateUser(filter: $filter) {
       id
-      fisrtName
+      firstName
       lastName
       profilePicture
       email
@@ -30,7 +30,7 @@ export const onUpdateUser = /* GraphQL */ `
   subscription OnUpdateUser($filter: ModelSubscriptionUserFilterInput) {
     onUpdateUser(filter: $filter) {
       id
-      fisrtName
+      firstName
       lastName
       profilePicture
       email
@@ -55,7 +55,7 @@ export const onDeleteUser = /* GraphQL */ `
   subscription OnDeleteUser($filter: ModelSubscriptionUserFilterInput) {
     onDeleteUser(filter: $filter) {
       id
-      fisrtName
+      firstName
       lastName
       profilePicture
       email
@@ -98,7 +98,7 @@ export const onCreateChatRoom = /* GraphQL */ `
         chatRoomID
         author {
           id
-          fisrtName
+          firstName
           lastName
           profilePicture
           email
@@ -151,7 +151,7 @@ export const onUpdateChatRoom = /* GraphQL */ `
         chatRoomID
         author {
           id
-          fisrtName
+          firstName
           lastName
           profilePicture
           email
@@ -204,7 +204,7 @@ export const onDeleteChatRoom = /* GraphQL */ `
         chatRoomID
         author {
           id
-          fisrtName
+          firstName
           lastName
           profilePicture
           email
@@ -242,7 +242,7 @@ export const onCreatePost = /* GraphQL */ `
       type
       author {
         id
-        fisrtName
+        firstName
         lastName
         profilePicture
         email
@@ -270,7 +270,7 @@ export const onUpdatePost = /* GraphQL */ `
       type
       author {
         id
-        fisrtName
+        firstName
         lastName
         profilePicture
         email
@@ -298,7 +298,7 @@ export const onDeletePost = /* GraphQL */ `
       type
       author {
         id
-        fisrtName
+        firstName
         lastName
         profilePicture
         email
@@ -326,7 +326,7 @@ export const onCreateMessage = /* GraphQL */ `
       chatRoomID
       author {
         id
-        fisrtName
+        firstName
         lastName
         profilePicture
         email
@@ -353,7 +353,7 @@ export const onUpdateMessage = /* GraphQL */ `
       chatRoomID
       author {
         id
-        fisrtName
+        firstName
         lastName
         profilePicture
         email
@@ -380,7 +380,7 @@ export const onDeleteMessage = /* GraphQL */ `
       chatRoomID
       author {
         id
-        fisrtName
+        firstName
         lastName
         profilePicture
         email
@@ -410,7 +410,7 @@ export const onCreateUserChatRooms = /* GraphQL */ `
       chatRoomId
       user {
         id
-        fisrtName
+        firstName
         lastName
         profilePicture
         email
@@ -459,7 +459,7 @@ export const onUpdateUserChatRooms = /* GraphQL */ `
       chatRoomId
       user {
         id
-        fisrtName
+        firstName
         lastName
         profilePicture
         email
@@ -508,7 +508,7 @@ export const onDeleteUserChatRooms = /* GraphQL */ `
       chatRoomId
       user {
         id
-        fisrtName
+        firstName
         lastName
         profilePicture
         email
