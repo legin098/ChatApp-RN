@@ -16,12 +16,11 @@ export const Splash = ({ setIsLoading }) => {
         const { data } = await API.graphql(
           graphqlOperation(getUser, { id: attributes.sub })
         );
-        console.log(data);
         dispatch(
           setUser({
             id: attributes.sub,
-            firstName: data.getUser.given_name,
-            lastName: data.getUser.family_name,
+            firstName: data.getUser.firstName,
+            lastName: data.getUser.lastName,
             profilePicture: data.getUser.profilePicture,
             email: attributes.email.toLowerCase(),
             status: data.getUser.status,
@@ -29,9 +28,9 @@ export const Splash = ({ setIsLoading }) => {
           })
         );
         setIsLoading(false);
-        console.log({attributes});
-      } catch (error) {
-        console.log(error);
+        // console.log(attributes);
+      } catch (e) {
+        console.log(e);
         setIsLoading(false);
       }
     })();

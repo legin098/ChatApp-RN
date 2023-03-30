@@ -1,5 +1,5 @@
 import { Amplify, Hub, API, graphqlOperation } from "aws-amplify";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useColorScheme } from "react-native";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import { store } from "./src/app/store";
@@ -22,7 +22,6 @@ export default function Wrapper() {
 
 const App = () => {
   const theme = useColorScheme();
-
   const user = useSelector((state) => state.user);
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
@@ -44,15 +43,20 @@ const App = () => {
             notificationToken: user.data.getUser.notificationToken,
           })
         );
+        console.log("user signed in");
         break;
       case "signOut":
         dispatch(resetUser());
+        console.log("user signed out");
+        break;
       default:
         break;
     }
   };
 
-  Hub.listen("auth", listener);
+  useEffect(() => {
+    Hub.listen("auth", listener);
+  }, []);
 
   if (isLoading) return <Splash setIsLoading={setIsLoading} />;
   return user.email ? <Root colorScheme={theme} /> : <AuthScreen />;
