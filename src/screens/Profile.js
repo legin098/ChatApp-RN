@@ -1,32 +1,30 @@
-import { MyText } from "../components/MyText"
-import { Auth } from "aws-amplify"
-import { MyButton } from "../components/MyButton"
-import { View } from "../components/themed/Themed"
-import { useSelector } from "react-redux"
-import { ProfilePicture } from "../components/ProfilePicture"
-import { StatusBar, useColorScheme } from "react-native"
+import { Auth } from "aws-amplify";
+import { MyButton } from "../components/MyButton";
+import { ScrollView } from "../components/themed/Themed";
+import { ProfilePicture } from "../components/profile/ProfilePicture";
+import { StatusBar, useColorScheme } from "react-native";
+import { ProfileInformation } from "../components/profile/ProfileInformation";
 
 export const Profile = () => {
-
   const theme = useColorScheme();
-  const user = useSelector((state) => state.user)
 
   const handleSignOut = async () => {
     try {
-      await Auth.signOut()
-      setUser(null)
+      await Auth.signOut();
+      setUser(null);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   return (
-    <View style={{flex: 1}}>
+    <ScrollView style={{ flex: 1 }}>
       <ProfilePicture />
+      <ProfileInformation />
       <MyButton title={"Sign Out"} onPress={handleSignOut} />
       <StatusBar
         barStyle={theme === "dark" ? "dark-content" : "light-content"}
       />
-    </View>
-  )
-}
+    </ScrollView>
+  );
+};

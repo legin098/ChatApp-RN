@@ -1,11 +1,10 @@
 import { View, StyleSheet, Image, Pressable } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { MyText } from "./MyText";
+import { MyText } from "../MyText";
 import * as ImagePicker from "expo-image-picker";
 import { CLOUD_NAME, UPLOAD_PRESET } from "@env";
-import { updateUser } from "../graphql/mutations";
-import { API } from "aws-amplify";
-import { resetProfilePicture } from "../features/user";
+import { resetProfilePicture } from "../../features/user";
+import { updateUserPicture } from "../../utils/userOperations";
 
 function ProfileFallback({ firstName }) {
   return (
@@ -48,27 +47,11 @@ export const ProfilePicture = () => {
       });
       const json = await response.json();
       //save to db
-      updateUserPicture(json.url);
+      await updateUserPicture(id, json.url);
       //set image to redux
       dispatch(resetProfilePicture(json.url));
     } catch (error) {
       console.log("savePhotoInCloudinary error", error);
-    }
-  };
-
-  const updateUserPicture = async (newPhoto) => {
-    try {
-      await API.graphql({
-        query: updateUser,
-        variables: {
-          input: {
-            id,
-            profilePicture: newPhoto,
-          },
-        },
-      });
-    } catch (error) {
-      console.log("updateUserPicture error", error);
     }
   };
 
