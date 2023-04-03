@@ -9,6 +9,15 @@ import { getUser } from "./src/graphql/queries";
 import Root from "./src/navigation/Root";
 import AuthScreen from "./src/screens/Auth";
 import { Splash } from "./src/screens/Splash";
+import { setNotificationHandler } from "expo-notifications";
+
+setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: false,
+    shouldSetBadge: false,
+  }),
+});
 
 Amplify.configure(awsConfig);
 

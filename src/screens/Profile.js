@@ -1,27 +1,17 @@
-import { Auth } from "aws-amplify";
-import { MyButton } from "../components/MyButton";
 import { ScrollView } from "../components/themed/Themed";
 import { ProfilePicture } from "../components/profile/ProfilePicture";
 import { StatusBar, useColorScheme } from "react-native";
 import { ProfileInformation } from "../components/profile/ProfileInformation";
+import { ProfilePermissions } from "../components/profile/ProfilePermissions";
 
 export const Profile = () => {
   const theme = useColorScheme();
 
-  const handleSignOut = async () => {
-    try {
-      await Auth.signOut();
-      setUser(null);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   return (
-    <ScrollView style={{ flex: 1 }}>
+    <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingBottom: 50 }} >
       <ProfilePicture />
       <ProfileInformation />
-      <MyButton title={"Sign Out"} onPress={handleSignOut} />
+      <ProfilePermissions />
       <StatusBar
         barStyle={theme === "dark" ? "dark-content" : "light-content"}
       />

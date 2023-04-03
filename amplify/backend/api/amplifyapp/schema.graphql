@@ -10,6 +10,8 @@ type User @model {
   email: String
   status: String
   notificationToken: String
+  latitude: String
+  longitude: String
   chatRooms: [ChatRoom] @manyToMany(relationName: "UserChatRooms")
 }
 

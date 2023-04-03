@@ -173,6 +173,8 @@ function AuthProvider({ children }) {
       email: attributes.email.toLowerCase(),
       status: null,
       notificationToken: null,
+      latitude: null,
+      longitude: null
     };
 
     try {

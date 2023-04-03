@@ -2,19 +2,27 @@ import { MyText } from "../components/MyText";
 import { MyButton } from "../components/MyButton";
 import { View } from "../components/themed/Themed";
 import { useNavigation } from "@react-navigation/native";
-import { StyleSheet } from "react-native";
-import { Image, View as DefaultView } from "react-native";
+import { Image, View as DefaultView, StyleSheet, Modal } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Modal } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+import { registerForPushNotificationsAsync } from "../utils/registerForPushNotificationsAsync";
+import { updateUserNotificationToken } from "../utils/userOperations";
+import { resetNotificationToken } from "../features/user";
 
 export const Onboarding = () => {
+  const { id } = useSelector((state) => state.user);
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   async function handleOnContinue() {
     try {
+      const token = await registerForPushNotificationsAsync();
+      if (token !== null) {
+        await updateUserNotificationToken(id, token);
+        dispatch(resetNotificationToken(token));
+      }
       await AsyncStorage.setItem("@firstLaunch", "true");
       navigation.navigate("Home");
-      //TODO: Ask permitions, get token and location
     } catch (error) {
       console.log("Onboarding error", error);
     }
